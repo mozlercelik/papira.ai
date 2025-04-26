@@ -16,7 +16,6 @@ const DocumentEditor = () => {
       {/* Toolbar */}
       <Box
         sx={{
-          p: 2,
           borderBottom: '1px solid',
           borderColor: 'divider',
           display: 'flex',
@@ -103,7 +102,7 @@ const DocumentEditor = () => {
           }}
         >
           <Typography variant="body1" color="text.secondary">
-            {content || 'Belgenizi buraya yazın veya yapıştırın...'}
+            {content || 'Belgenizin formatlı hali burada görünecek.'}
           </Typography>
         </Paper>
       </Box>

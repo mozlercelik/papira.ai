@@ -15,33 +15,25 @@ import {
   LinkedIn,
   Instagram
 } from '@mui/icons-material';
+import Image from 'next/image';
 
 const Footer = () => {
   const theme = useTheme();
 
   const footerLinks = {
     product: [
-      { label: 'Features', href: '/features' },
-      { label: 'Templates', href: '/templates' },
-      { label: 'Pricing', href: '/pricing' },
-      { label: 'Documentation', href: '/docs' }
+      { label: 'Özellikler', href: '/features' },
+      { label: 'Şablonlar', href: '/templates' },
+      { label: 'Fiyatlandırma', href: '/pricing' }
     ],
     company: [
-      { label: 'About', href: '/about' },
+      { label: 'Hakkımızda', href: '/about' },
       { label: 'Blog', href: '/blog' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Contact', href: '/contact' }
-    ],
-    resources: [
-      { label: 'Help Center', href: '/help' },
-      { label: 'Community', href: '/community' },
-      { label: 'Status', href: '/status' },
-      { label: 'API', href: '/api' }
+      { label: 'İletişim', href: '/contact' }
     ],
     legal: [
-      { label: 'Privacy', href: '/privacy' },
-      { label: 'Terms', href: '/terms' },
-      { label: 'Security', href: '/security' }
+      { label: 'Gizlilik', href: '/privacy' },
+      { label: 'Kullanım Koşulları', href: '/terms' }
     ]
   };
 
@@ -59,7 +51,7 @@ const Footer = () => {
       sx={{
         backgroundColor: theme.palette.background.paper,
         borderTop: `1px solid ${theme.palette.border.light}`,
-        py: 6,
+        py: 4,
         mt: 'auto'
       }}
     >
@@ -67,19 +59,19 @@ const Footer = () => {
         <Grid container spacing={4}>
           {/* Company Info */}
           <Grid item xs={12} md={4}>
-            <Typography
-              variant="h6"
-              sx={{
-                color: theme.palette.primary.main,
-                fontFamily: '"Playfair Display", serif',
-                fontWeight: 700,
-                mb: 2
-              }}
-            >
-              Papira
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <Image
+                src="/images/logo-vertical.png"
+                alt="Papira Logo"
+                width={120}
+                height={40}
+                style={{
+                  objectFit: 'contain'
+                }}
+              />
+            </Box>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              Create beautiful documents with ease. The modern way to write, edit, and collaborate.
+              Modern belge oluşturma ve işbirliği platformu.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
               {socialLinks.map((social, index) => (
@@ -137,7 +129,7 @@ const Footer = () => {
           ))}
         </Grid>
 
-        <Divider sx={{ my: 4 }} />
+        <Divider sx={{ my: 3 }} />
 
         {/* Copyright */}
         <Box
@@ -150,24 +142,8 @@ const Footer = () => {
           }}
         >
           <Typography variant="body2" color="text.secondary">
-            © {new Date().getFullYear()} Papira. All rights reserved.
+            © {new Date().getFullYear()} Papira. Tüm hakları saklıdır.
           </Typography>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Link
-              href="/privacy"
-              color="text.secondary"
-              sx={{ textDecoration: 'none' }}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              color="text.secondary"
-              sx={{ textDecoration: 'none' }}
-            >
-              Terms of Service
-            </Link>
-          </Box>
         </Box>
       </Container>
     </Box>

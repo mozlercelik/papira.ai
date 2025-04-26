@@ -65,12 +65,6 @@ const Home = () => {
     }
   }, [])
 
-  const handleStartEditing = () => {
-    if (selectedUniversity) {
-      router.push('/editor')
-    }
-  }
-
   return (
     <Box
       sx={{
@@ -81,7 +75,9 @@ const Home = () => {
       }}
     >
       <Hero />
+
       <CategorySection />
+
       <AIFeatures />
     </Box>
   )

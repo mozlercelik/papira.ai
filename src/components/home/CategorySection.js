@@ -6,34 +6,36 @@ import AssessmentIcon from '@mui/icons-material/Assessment'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { Fragment } from 'react'
+import { Article, Assessment, StickyNote2 } from '@mui/icons-material'
 
 const categories = [
+  {
+    title: 'Proje Dokümanları',
+    description: 'Çalışanlar ve yöneticiler',
+    icon: <Assessment sx={{ fontSize: 40 }} />,
+    color: '#8d6748',
+    example: 'Proje planı, ilerleme raporu',
+    gradient: 'linear-gradient(135deg, #f3e8e2 0%, #bfa084 100%)',
+    redirect: "/generator/projects",
+  },
   {
     title: 'Akademik Çalışmalar',
     description: 'Öğrenciler ve araştırmacılar',
     icon: <SchoolIcon sx={{ fontSize: 40 }} />,
-    color: '#2196F3',
+    color: '#7c5e44',
     example: 'Tez önerisi, literatür taraması, araştırma makalesi',
-    gradient: 'linear-gradient(135deg, #2196F3 0%, #64B5F6 100%)',
-    redirect: "/generator/academy"
+    gradient: 'linear-gradient(135deg, #ede0d4 0%, #d6ccc2 100%)',
+    redirect: "/generator/academy",
+    featured: true
   },
   {
-    title: 'Proje Dokümanları',
-    description: 'Çalışanlar ve yöneticiler',
-    icon: <WorkIcon sx={{ fontSize: 40 }} />,
-    color: '#FF4081',
-    example: 'Proje planı, ilerleme raporu, değerlendirme formu',
-    gradient: 'linear-gradient(135deg, #FF4081 0%, #FF80AB 100%)',
-    redirect: "/generator/projects"
-  },
-  {
-    title: 'Toplantı Materyalleri',
-    description: 'Etkinlik organizatörleri',
-    icon: <EventIcon sx={{ fontSize: 40 }} />,
-    color: '#4CAF50',
-    example: 'Toplantı gündemi, davetiye, sunum şablonu',
-    gradient: 'linear-gradient(135deg, #4CAF50 0%, #81C784 100%)',
-    redirect: "/generator/meetings"
+    title: 'Kurumsal Dokümanlar',
+    description: 'Etkinlik organizatörleri ve özel firmalar',
+    icon: <StickyNote2 sx={{ fontSize: 40 }} />,
+    color: '#a68a64',
+    example: 'Teknik Şartname, toplantı gündemi, davetiye, sunum şablonu',
+    gradient: 'linear-gradient(135deg, #f5eee6 0%, #bfa084 100%)',
+    redirect: "/generator/business"
   }
 ]
 
@@ -161,11 +163,10 @@ const CategorySection = () => {
                           borderRadius: '50%',
                           background: category.gradient,
                           transition: 'transform 0.3s ease-in-out',
-                          boxShadow: `0 4px 20px ${category.color}40`,
+                          boxShadow: `0 4px 20px #bfa08430`,
                           position: 'relative',
                           height: "40px",
                           width: "40px",
-
                           '&::after': {
                             content: '""',
                             position: 'absolute',
@@ -174,7 +175,7 @@ const CategorySection = () => {
                             right: 0,
                             bottom: 0,
                             borderRadius: '50%',
-                            background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%)',
+                            background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%)',
                             pointerEvents: 'none'
                           }
                         }}
@@ -193,7 +194,7 @@ const CategorySection = () => {
                           color: category.color,
                           mb: 1,
                           fontFamily: '"Playfair Display", serif',
-                          textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                          textShadow: '0 1px 2px rgba(0,0,0,0.04)'
                         }}
                       >
                         {category.title}
@@ -264,7 +265,6 @@ const CategorySection = () => {
                           color="text.secondary"
                           sx={{
                             textAlign: 'center',
-                            fontStyle: 'italic',
                             lineHeight: 1.6,
                             px: { xs: 0.5, sm: 1 }
                           }}
@@ -277,24 +277,35 @@ const CategorySection = () => {
                     {/* Quick Start Button */}
                     <Button
                       variant="contained"
-                      size="small"
-                      // onClick={() => router.push(category.redirect)}
+                      fullWidth
                       sx={{
                         mt: 2,
-                        py: 1,
-                        px: 3,
-                        borderRadius: 2,
-                        fontSize: '0.9rem',
-                        fontWeight: 600,
-                        textTransform: 'none',
-                        background: category.gradient,
-                        boxShadow: `0 4px 14px ${category.color}40`,
-                        '&:hover': {
-                          background: category.gradient,
-                          boxShadow: `0 6px 20px ${category.color}60`,
-                          transform: 'translateY(-2px)'
+                        fontWeight: 700,
+                        fontFamily: '"Playfair Display", serif',
+                        color: '#7c5e44',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        background: "transparent",
+                        border: '1px solid #7c5e44',
+                        zIndex: 1,
+                        fontSize: "1.25rem",
+                        lineHeight: 2.5,
+                        "&:hover": {
+                          background: 'linear-gradient(90deg, #ede0d4 0%, #d6ccc2 100%)',
+                          color: '#7c4f00',
                         },
-                        transition: 'all 0.3s ease-in-out'
+                        ...(category.featured && {
+                          background: 'linear-gradient(90deg, #ede0d4 0%, #d6ccc2 100%)',
+
+                          "&:hover": {
+                            background: 'linear-gradient(90deg, #d6ccc2 0%, #bfa084 100%)',
+                            color: '#7c5e44',
+                          },
+                        }),
+                        '& > *': {
+                          position: 'relative',
+                          zIndex: 3
+                        }
                       }}
                     >
                       Hemen Başla

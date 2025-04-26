@@ -44,13 +44,13 @@ const Error500 = () => {
             500
           </Typography>
           <Typography variant='h5' sx={{ mb: 1, fontSize: '1.5rem !important' }}>
-            Server Error 👨🏻‍💻
+            Sunucu Hatası 👨🏻‍💻
           </Typography>
-          <Typography variant='body2'>Upps, something went wrong.</Typography>
+          <Typography variant='body2'>Upps, bir şeyler ters gitti.</Typography>
         </BoxWrapper>
         <Link passHref href='/'>
           <Button variant='contained' sx={{ px: 5.5, mt: 3 }}>
-            Go Home
+            Ana Sayfaya Dön
           </Button>
         </Link>
       </Box>

@@ -18,7 +18,6 @@ const ProjectEditor = () => {
       {/* Toolbar */}
       <Box
         sx={{
-          p: 2,
           borderBottom: '1px solid',
           borderColor: 'divider',
           display: 'flex',
@@ -119,7 +118,7 @@ const ProjectEditor = () => {
           }}
         >
           <Typography variant="body1" color="text.secondary">
-            {content || 'Proje belgenizi buraya yazın veya yapıştırın...'}
+            {content || 'Proje belgeniz burada görünecek.'}
           </Typography>
         </Paper>
       </Box>

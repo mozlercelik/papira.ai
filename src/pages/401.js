@@ -46,17 +46,17 @@ const Error401 = () => {
           </Typography>
 
           <Typography variant='h5' sx={{ mb: 1, fontSize: '1.5rem !important' }}>
-            Unauthorized! 🔐
+            Yetkisiz Erişim! 🔐
           </Typography>
 
           <Typography variant='body2'>
-            You are not authorized to access this page. Go back to the home page!
+            Bu sayfaya erişim yetkiniz bulunmuyor. Ana sayfaya dönün!
           </Typography>
         </BoxWrapper>
 
         <Link passHref href='/'>
           <Button variant='contained' sx={{ px: 5.5, mt: 3 }}>
-            Go Home
+            Ana Sayfaya Dön
           </Button>
         </Link>
       </Box>

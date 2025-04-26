@@ -40,13 +40,13 @@ const Error404 = () => {
         </Typography>
 
         <Typography variant='h5' sx={{ mb: 1, fontSize: '1.5rem !important' }}>
-          Page Not Found ⚠️
+          Sayfa Bulunamadı ⚠️
         </Typography>
       </BoxWrapper>
 
       <Link passHref href='/'>
         <Button variant='contained' sx={{ px: 5.5, mt: 3 }}>
-          Go Home
+          Ana Sayfaya Dön
         </Button>
       </Link>
     </Box>

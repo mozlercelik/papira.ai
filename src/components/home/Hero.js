@@ -47,16 +47,15 @@ const Hero = () => {
                 display: 'inline-block'
               }}
             >
-              Papira'ya Hoş Geldiniz
+              Mevzuata Uygun Formatta Belge Oluşturun!
             </Typography>
             <Typography
               variant="h5"
               color="text.secondary"
               paragraph
-              sx={{ mb: 4, lineHeight: 1.6 }}
+              sx={{ mb: 4, lineHeight: 1.6, fontWeight: 500 }}
             >
-              Profesyonel belgelerinizi özelleştirilebilir şablonlarla kolayca oluşturun.
-              AI destekli özelliklerimizle içeriğinizi geliştirin ve zamandan tasarruf edin.
+              Papira, akademik çalışmalarınızdan projelerinize, toplantı materyallerine kadar her türlü belgeyi kolayca oluşturmanızı sağlar.
             </Typography>
             <Box
               sx={{
@@ -68,7 +67,7 @@ const Hero = () => {
               <Button
                 variant="contained"
                 size="large"
-                onClick={() => router.push('/editor')}
+                onClick={() => router.push('/generator/academy')}
                 sx={{
                   px: 4,
                   py: 1.5,
@@ -117,7 +116,7 @@ const Hero = () => {
               }}
             >
               <Image
-                src="/images/hero-image.png"
+                src="/images/papira-cover.jpg"
                 alt="Document creation illustration"
                 fill
                 style={{

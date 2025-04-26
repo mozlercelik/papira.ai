@@ -5,12 +5,13 @@ import DocumentEditor from '@/components/generator/DocumentEditor'
 import FeedbackPanel from '@/components/generator/FeedbackPanel'
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-    height: '100%',
+    height: 'fit-content',
+    padding: "1.5rem",
     borderRadius: theme.shape.borderRadius * 2,
     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
     background: 'linear-gradient(135deg, #fff 0%, #f8f8f8 100%)',
     position: 'relative',
-    overflow: 'hidden',
+    overflow: 'auto',
     '&::before': {
         content: '""',
         position: 'absolute',

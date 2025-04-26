@@ -8,7 +8,7 @@ const MeetingFeedback = () => {
   const [feedback, setFeedback] = useState(null)
 
   return (
-    <Box sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Typography
         variant="h6"
         sx={{
@@ -25,14 +25,6 @@ const MeetingFeedback = () => {
       </Typography>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <Button
-          startIcon={<GroupIcon />}
-          variant="outlined"
-          fullWidth
-        >
-          Katılımcıları Takip Et
-        </Button>
-
         <Button
           startIcon={<AnalyticsIcon />}
           variant="outlined"

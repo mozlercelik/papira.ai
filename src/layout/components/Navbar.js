@@ -24,10 +24,14 @@ import {
   Notifications,
   Bookmark,
   Dashboard,
-  Close
+  Close,
+  Paid,
+  AutoFixHigh,
+  Description
 } from '@mui/icons-material';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const HideOnScroll = ({ children }) => {
   const trigger = useScrollTrigger();
@@ -72,10 +76,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: 'Templates', path: '/templates', icon: <Bookmark /> },
-    { label: 'Dashboard', path: '/dashboard', icon: <Dashboard /> },
-    { label: 'Features', path: '/features' },
-    { label: 'Pricing', path: '/pricing' }
+    { label: 'Şablonlar', path: '/templates', icon: <Bookmark /> },
+    { label: 'Panel', path: '/dashboard', icon: <Dashboard /> },
+    { label: 'Özellikler', path: '/features', icon: <AutoFixHigh /> },
+    { label: 'Fiyatlandırma', path: '/pricing', icon: <Paid /> }
   ];
 
   return (
@@ -101,24 +105,18 @@ const Navbar = () => {
             }}
           >
             {/* Logo and Brand */}
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Typography
-                variant="h5"
-                component={Link}
-                href="/"
-                sx={{
-                  textDecoration: 'none',
-                  color: theme.palette.primary.main,
-                  fontFamily: '"Playfair Display", serif',
-                  fontWeight: 700,
-                  letterSpacing: '-0.02em',
-                  '&:hover': {
-                    color: theme.palette.primary.dark
-                  }
-                }}
-              >
-                Papira
-              </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Link href="/" passHref style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                <img
+                  src="/images/logo-vertical.png"
+                  alt="Papira Logo"
+                  style={{
+                    width: "160px",
+                    height: "auto",
+                    objectFit: 'contain'
+                  }}
+                />
+              </Link>
             </Box>
 
             {/* Navigation Links - Desktop */}
@@ -131,9 +129,8 @@ const Navbar = () => {
                     href={item.path}
                     startIcon={item.icon}
                     sx={{
-                      color: theme.palette.text.primary,
+                      color: router.pathname === item.path ? theme.palette.primary.main : theme.palette.text.primary,
                       '&:hover': {
-                        backgroundColor: 'transparent',
                         color: theme.palette.primary.main
                       }
                     }}
@@ -145,110 +142,43 @@ const Navbar = () => {
             )}
 
             {/* Right Side Actions */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <IconButton
-                color="inherit"
-                sx={{
-                  color: theme.palette.text.primary,
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover
-                  }
-                }}
-              >
-                <Search />
-              </IconButton>
-
-              <IconButton
-                color="inherit"
-                sx={{
-                  color: theme.palette.text.primary,
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover
-                  }
-                }}
-              >
-                <Badge badgeContent={3} color="primary">
-                  <Notifications />
-                </Badge>
-              </IconButton>
-
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <Button
                 variant="contained"
                 startIcon={<Create />}
-                sx={{
-                  backgroundColor: theme.palette.primary.main,
-                  '&:hover': {
-                    backgroundColor: theme.palette.primary.dark
-                  }
-                }}
-                onClick={() => router.push('/editor')}
+                onClick={() => router.push('/generator/business')}
               >
-                New Document
+                Yeni Belge
               </Button>
 
-              <IconButton
-                color="inherit"
-                onClick={handleMenu}
-                sx={{
-                  color: theme.palette.text.primary,
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover
-                  }
-                }}
-              >
-                <Avatar
-                  sx={{
-                    width: 32,
-                    height: 32,
-                    bgcolor: theme.palette.primary.main
-                  }}
-                >
-                  M
-                </Avatar>
-              </IconButton>
-
-              {/* Mobile Menu Button */}
-              {isMobile && (
+              {isMobile ? (
                 <IconButton
                   color="inherit"
                   onClick={handleMobileMenuToggle}
-                  sx={{
-                    color: theme.palette.text.primary,
-                    '&:hover': {
-                      backgroundColor: theme.palette.action.hover
-                    }
-                  }}
+                  sx={{ ml: 1 }}
                 >
                   {mobileMenuOpen ? <Close /> : <MenuIcon />}
                 </IconButton>
+              ) : (
+                <>
+                  {/* <IconButton color="inherit">
+                    <Search />
+                  </IconButton> */}
+                  <IconButton>
+                    <Badge badgeContent={4} color="error">
+                      <Notifications />
+                    </Badge>
+                  </IconButton>
+
+                  <IconButton
+                    onClick={handleMenu}
+                    sx={{ ml: 1 }}
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </>
               )}
             </Box>
-
-            {/* User Menu */}
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              PaperProps={{
-                sx: {
-                  mt: 1.5,
-                  minWidth: 200,
-                  borderRadius: 2,
-                  boxShadow: theme.shadows[2],
-                  border: `1px solid ${theme.palette.border.light}`
-                }
-              }}
-            >
-              <MenuItem onClick={handleClose}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Avatar sx={{ width: 24, height: 24, bgcolor: theme.palette.primary.main }}>M</Avatar>
-                  <Typography variant="body2">My Profile</Typography>
-                </Box>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>My Documents</MenuItem>
-              <MenuItem onClick={handleClose}>Settings</MenuItem>
-              <MenuItem onClick={handleClose} sx={{ color: theme.palette.error.main }}>Logout</MenuItem>
-            </Menu>
           </Toolbar>
         </Container>
 

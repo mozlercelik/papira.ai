@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { Box, Typography, Button, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Checkbox, Divider } from '@mui/material'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import DescriptionIcon from '@mui/icons-material/Description'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
-import { useState } from 'react'
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh'
+
 
 const FormatInputs = () => {
   const [format, setFormat] = useState('')
@@ -21,11 +23,10 @@ const FormatInputs = () => {
   }
 
   return (
-    <Box sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Typography
         variant="h6"
         sx={{
-          mb: 3,
           fontWeight: 600,
           color: 'text.primary',
           display: 'flex',
@@ -37,7 +38,7 @@ const FormatInputs = () => {
         Format Seçimi
       </Typography>
 
-      <FormControl fullWidth sx={{ mb: 3 }}>
+      <FormControl fullWidth sx={{ my: 2 }}>
         <InputLabel>Format</InputLabel>
         <Select
           value={format}
@@ -56,7 +57,6 @@ const FormatInputs = () => {
         variant="outlined"
         component="label"
         startIcon={<CloudUploadIcon />}
-        sx={{ mb: 3 }}
       >
         Özel Format Yükle
         <input
@@ -66,7 +66,39 @@ const FormatInputs = () => {
         />
       </Button>
 
-      <Divider sx={{ my: 2 }} />
+      {/* Kullanıcı Araştırma/Doküman Yükleme Alanı */}
+      <Typography
+        variant="h6"
+        sx={{
+          mt: 4,
+          mb: 2,
+          fontWeight: 600,
+          color: 'text.primary',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1
+        }}
+      >
+        <DescriptionIcon />
+
+        İçerik
+      </Typography>
+
+      <Button
+        variant="outlined"
+        component="label"
+        startIcon={<CloudUploadIcon />}
+      >
+        Dosya Yükle
+        <input
+          type="file"
+          hidden
+          multiple
+          accept=".pdf,.doc,.docx,.txt"
+        />
+      </Button>
+
+      <Divider sx={{ my: 4 }} />
 
       <Typography
         variant="h6"
@@ -113,22 +145,14 @@ const FormatInputs = () => {
         label="Ekler"
       />
 
-      <Box sx={{ flexGrow: 1 }} />
+      <Box sx={{ my: 2 }} />
 
       <Button
-        variant="contained"
+        variant="aiGradient"
         fullWidth
-        sx={{
-          mt: 2,
-          py: 1.5,
-          borderRadius: 2,
-          background: 'linear-gradient(135deg, #2196F3 0%, #1976D2 100%)',
-          '&:hover': {
-            background: 'linear-gradient(135deg, #1976D2 0%, #1565C0 100%)'
-          }
-        }}
       >
-        Belgeyi Oluştur
+        <AutoFixHighIcon sx={{ mr: 1 }} />
+        Oluştur
       </Button>
     </Box>
   )

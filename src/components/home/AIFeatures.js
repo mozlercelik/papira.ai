@@ -5,18 +5,18 @@ import SearchIcon from '@mui/icons-material/Search'
 
 const features = [
   {
-    title: 'AI-Powered Feedback',
-    description: 'Get intelligent suggestions to improve your content quality and structure.',
+    title: 'Yapay Zeka Destekli Geri Bildirim',
+    description: 'İçeriğinizin kalitesini ve yapısını iyileştirmek için akıllı öneriler alın.',
     icon: <AutoFixHighIcon sx={{ fontSize: 40, color: 'primary.main' }} />
   },
   {
-    title: 'Plagiarism Check',
-    description: 'Ensure your content is original with our advanced plagiarism detection.',
+    title: 'İntihal Kontrolü',
+    description: 'Gelişmiş intihal tespiti ile içeriğinizin özgün olduğundan emin olun.',
     icon: <PlagiarismIcon sx={{ fontSize: 40, color: 'primary.main' }} />
   },
   {
-    title: 'Smart Research',
-    description: 'Find relevant literature and sources for your topic automatically.',
+    title: 'Akıllı Araştırma',
+    description: 'Konunuzla ilgili literatür ve kaynakları otomatik olarak bulun.',
     icon: <SearchIcon sx={{ fontSize: 40, color: 'primary.main' }} />
   }
 ]
@@ -32,7 +32,7 @@ const AIFeatures = () => {
           gutterBottom
           sx={{ mb: 6, fontWeight: 'bold' }}
         >
-          AI-Powered Features
+          Yapay Zeka Destekli Özellikler
         </Typography>
         <Grid container spacing={4}>
           {features.map((feature) => (

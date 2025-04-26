@@ -3,7 +3,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ErrorIcon from '@mui/icons-material/Error'
 import WarningIcon from '@mui/icons-material/Warning'
 import InfoIcon from '@mui/icons-material/Info'
-import GroupIcon from '@mui/icons-material/Group'
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import { useState } from 'react'
 
@@ -20,10 +20,10 @@ const ProjectFeedback = () => {
     { type: 'error', text: 'Bütçe tahmini belirtilmemiş' }
   ])
 
-  const [collaborators, setCollaborators] = useState([
-    { name: 'Ahmet Yılmaz', role: 'Proje Yöneticisi' },
-    { name: 'Ayşe Demir', role: 'Geliştirici' },
-    { name: 'Mehmet Kaya', role: 'Tasarımcı' }
+  const [standards, setStandards] = useState([
+    { name: 'APA', description: 'APA Stilinde Yapılandırılmış' },
+    { name: 'MLA', description: 'MLA Stilinde Yapılandırılmış' },
+    { name: 'IEEE', description: 'IEEE Stilinde Yapılandırılmış' }
   ])
 
   const getStatusColor = (status) => {
@@ -40,7 +40,7 @@ const ProjectFeedback = () => {
   }
 
   return (
-    <Box sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Typography
         variant="h6"
         sx={{
@@ -148,8 +148,8 @@ const ProjectFeedback = () => {
         }}
       >
         <Typography variant="subtitle2" sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-          <GroupIcon fontSize="small" />
-          İşbirlikçiler
+          <FormatListBulletedIcon fontSize="small" />
+          Standartlar
         </Typography>
         <Button
           variant="contained"
@@ -157,14 +157,14 @@ const ProjectFeedback = () => {
           fullWidth
           sx={{ mb: 2 }}
         >
-          İşbirlikçi Öner
+          Standartları Kontrol Et
         </Button>
         <List dense>
-          {collaborators.map((collaborator, index) => (
+          {standards.map((standard, index) => (
             <ListItem key={index} sx={{ px: 0 }}>
               <ListItemText
-                primary={collaborator.name}
-                secondary={collaborator.role}
+                primary={standard.name}
+                secondary={standard.description}
                 primaryTypographyProps={{ variant: 'body2' }}
                 secondaryTypographyProps={{ variant: 'caption' }}
               />
