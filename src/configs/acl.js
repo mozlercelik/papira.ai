@@ -26,6 +26,7 @@ const defineRulesFor = (role, permission, permissions) => {
     case 'user':
       can(['read'], "academy")
       can(['read'], "projects")
+      can(['read'], "meetings")
       break
 
     default:

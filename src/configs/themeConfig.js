@@ -2,7 +2,7 @@
 
 const themeConfig = {
     // ** Layout Configs
-    templateName: 'CTFgo' /* App Name */,
+    templateName: 'Papira' /* App Name */,
 
     // ** Routing Configs
     routingLoader: true /* true | false */,

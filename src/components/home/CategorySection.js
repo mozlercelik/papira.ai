@@ -14,7 +14,8 @@ const categories = [
     icon: <SchoolIcon sx={{ fontSize: 40 }} />,
     color: '#2196F3',
     example: 'Tez önerisi, literatür taraması, araştırma makalesi',
-    gradient: 'linear-gradient(135deg, #2196F3 0%, #64B5F6 100%)'
+    gradient: 'linear-gradient(135deg, #2196F3 0%, #64B5F6 100%)',
+    redirect: "/generator/academy"
   },
   {
     title: 'Proje Dokümanları',
@@ -22,7 +23,8 @@ const categories = [
     icon: <WorkIcon sx={{ fontSize: 40 }} />,
     color: '#FF4081',
     example: 'Proje planı, ilerleme raporu, değerlendirme formu',
-    gradient: 'linear-gradient(135deg, #FF4081 0%, #FF80AB 100%)'
+    gradient: 'linear-gradient(135deg, #FF4081 0%, #FF80AB 100%)',
+    redirect: "/generator/projects"
   },
   {
     title: 'Toplantı Materyalleri',
@@ -30,15 +32,8 @@ const categories = [
     icon: <EventIcon sx={{ fontSize: 40 }} />,
     color: '#4CAF50',
     example: 'Toplantı gündemi, davetiye, sunum şablonu',
-    gradient: 'linear-gradient(135deg, #4CAF50 0%, #81C784 100%)'
-  },
-  {
-    title: 'Detaylı Raporlar',
-    description: 'Analistler ve danışmanlar',
-    icon: <AssessmentIcon sx={{ fontSize: 40 }} />,
-    color: '#FFC107',
-    example: 'Pazar analizi, performans raporu, değerlendirme sunumu',
-    gradient: 'linear-gradient(135deg, #FFC107 0%, #FFD54F 100%)'
+    gradient: 'linear-gradient(135deg, #4CAF50 0%, #81C784 100%)',
+    redirect: "/generator/meetings"
   }
 ]
 
@@ -80,9 +75,10 @@ const CategorySection = () => {
         >
           Belge Türünü Seçin
         </Typography>
-        <Grid container spacing={{ xs: 2, sm: 3, md: 2 }}>
+
+        <Grid container spacing={{ xs: 2, sm: 3, md: 2 }} sx={{ justifyContent: "center" }}>
           {categories.map((category, index) => (
-            <Grid item key={category.title} xs={12} sm={6} md={3}>
+            <Grid item key={category.title} xs={12} sm={6} md={4}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -132,7 +128,7 @@ const CategorySection = () => {
                   }}
                 >
                   <CardActionArea
-                    onClick={() => router.push('/editor')}
+                    onClick={() => window.open(category.redirect, '_blank')}
                     sx={{
                       height: '100%',
                       display: 'flex',
@@ -147,14 +143,14 @@ const CategorySection = () => {
                       }
                     }}
                   >
-                    <Box 
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "start",
-                      height: "100%",
-                    }}
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "start",
+                        height: "100%",
+                      }}
                     >
                       {/* Icon Section */}
                       <Box
@@ -282,7 +278,7 @@ const CategorySection = () => {
                     <Button
                       variant="contained"
                       size="small"
-                      onClick={() => router.push('/editor')}
+                      // onClick={() => router.push(category.redirect)}
                       sx={{
                         mt: 2,
                         py: 1,
